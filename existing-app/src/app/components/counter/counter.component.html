@@ -1,0 +1,19 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+  <h1 class="text-3xl font-bold mb-4">Counter: {{ count$ | async }}</h1>
+  <div class="flex gap-4">
+    <!-- Increment Button -->
+    <button mat-raised-button color="primary" (click)="increment()" class="uppercase">
+      Increment
+    </button>
+
+    <!-- Decrement Button -->
+    <button mat-raised-button color="accent" (click)="decrement()" class="uppercase">
+      Decrement
+    </button>
+
+    <!-- Reset Button -->
+    <button mat-raised-button color="warn" (click)="reset()" class="uppercase">
+      Reset
+    </button>
+  </div>
+</div>
