@@ -1,0 +1,61 @@
+<!-- Product Card with Add to Cart and View Product Buttons -->
+<div
+  class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+>
+  <!-- Product Image -->
+  <img
+    [src]="product.image"
+    [alt]="product.title"
+    class="w-full max-h-80 object-cover"
+  />
+
+  <!-- Product Details -->
+  <div class="p-4">
+    <h3
+      class="text-lg font-semibold text-gray-800 truncate"
+      title="{{ product.title }}"
+    >
+      {{ product.title }}
+    </h3>
+
+    <p class="text-gray-600 text-sm mt-2">
+      {{ product.description | slice:0:80 }}...
+    </p>
+
+    <!-- Price -->
+    <div class="flex items-center justify-between mt-3">
+      <span class="text-xl font-bold text-green-600">
+        ${{ product.price }}
+      </span>
+      <!-- Rating -->
+      <div class="flex items-center">
+        <span class="text-yellow-500 text-sm mr-1">★</span>
+        <span class="text-gray-700 text-sm">{{ product.rating.rate }}</span>
+        <span class="text-gray-500 text-xs ml-1">
+          ({{ product.rating.count }} reviews)
+        </span>
+      </div>
+    </div>
+
+    <!-- Category -->
+    <p class="text-gray-500 text-sm mt-1">
+      Category: <span class="text-gray-800">{{ product.category }}</span>
+    </p>
+
+    <!-- Buttons -->
+    <div class="flex justify-between items-center mt-4">
+      <button
+        class="bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded-md text-sm"
+
+      >
+        Add to Cart
+      </button>
+      <button
+        class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded-md text-sm"
+
+      >
+        View Product
+      </button>
+    </div>
+  </div>
+</div>

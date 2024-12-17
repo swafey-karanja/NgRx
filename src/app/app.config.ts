@@ -6,7 +6,8 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import { counterReducer } from './states/reducer/counter.reducer';
+import { counterReducer } from './states/reducers/counter.reducer';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideStore(),
     provideEffects(),
-    provideState({name: 'counter', reducer: counterReducer})
+    provideState({name: 'counter', reducer: counterReducer}),
+    provideHttpClient(withFetch()),
   ]
 };

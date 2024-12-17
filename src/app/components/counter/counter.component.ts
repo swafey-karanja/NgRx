@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../../states/app.state';
-import { selectCount } from '../../states/selector/counter.selector';
+import { selectCount } from '../../states/selectors/counter.selector';
 import { AsyncPipe } from '@angular/common';
 import { decrement, increment, reset } from '../../states/actions/counter.actions';
 
