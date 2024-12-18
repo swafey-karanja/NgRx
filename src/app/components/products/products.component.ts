@@ -4,6 +4,8 @@ import { Product } from '../../models/product';
 import { take } from 'rxjs';
 import { ProductCardComponent } from "../product-card/product-card.component";
 import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { addToCart } from '../../states/actions/cart.actions';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class ProductsComponent {
 
   products: Product[] = [];
-  constructor(private productsSevice: ProductsService) {}
+  constructor(private productsSevice: ProductsService, private store: Store<{cart : { products: Product[] }}>) {}
 
   ngOnInit() {
     this.fetchProducts();
@@ -31,5 +33,10 @@ export class ProductsComponent {
       }
     }
     )
+  }
+
+  addItemToCart(product: Product): void {
+    console.log(product);
+    this.store.dispatch(addToCart({ product }))
   }
 }

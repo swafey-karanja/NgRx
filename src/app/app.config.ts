@@ -8,6 +8,7 @@ import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { counterReducer } from './states/reducers/counter.reducer';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { cartReducer } from './states/reducers/cart.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideEffects(),
     provideState({name: 'counter', reducer: counterReducer}),
+    provideState({name: 'cart', reducer: cartReducer}),
     provideHttpClient(withFetch()),
   ]
 };

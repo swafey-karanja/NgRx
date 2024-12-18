@@ -1,1 +1,90 @@
-<p>cart works!</p>
+<div class="p-6 w-full container mx-auto grid grid-cols-3 gap-8">
+  <!-- Shopping Cart Section -->
+  <div class="col-span-2">
+    <h2 class="text-3xl font-semibold mb-6">Shopping Cart <span class="text-gray-500 text-lg"></span></h2>
+
+    <!-- Shopping Cart Table -->
+    <div class="border-t">
+      <div *ngIf="product$ | async as products;">
+        <div *ngFor="let product of products" class="flex items-center py-6 border-b">
+          <img [src]="product.image" alt="{{ product.title }}" class="w-20 h-20 object-cover mr-6">
+          <div class="flex-1">
+            <h3 class="text-lg font-semibold">{{ product.title }}</h3>
+            <!-- <p class="text-sm text-gray-500">PS4</p> -->
+            <button class="text-red-500 mt-1" (click)="removeFromCart(product.id)">Remove</button>
+          </div>
+          <div class="flex items-center">
+            <!-- Quantity Controls -->
+            <button (click)="decreaseQuantity(product.id)" class="w-6 h-6 border text-center">-</button>
+            <input
+              type="number"
+              [(ngModel)]="product.quantity"
+              (change)="validateQuantity(product)"
+              min="1"
+              class="w-20 h-8 text-center mx-1 border"
+            >
+            <button (click)="increaseQuantity(product.id)" class="w-6 h-6 border text-center">+</button>
+          </div>
+          <div class="ml-6 text-right">
+            <!-- Titles Row -->
+            <div class="grid grid-cols-2 gap-8 mb-2 text-gray-500 text-sm">
+              <span class="text-left">Price</span>
+              <span class="text-right">Total Price</span>
+            </div>
+
+            <!-- Price and Total Price Row -->
+            <div class="flex justify-between space-x-12">
+              <p class="text-gray-700 font-medium">£{{ product.price.toFixed(2) }}</p>
+              <p class="text-gray-900 font-bold">£{{ (product.price * product.quantity).toFixed(2) }}</p>
+            </div>
+          </div>
+
+        </div>
+    </div>
+    </div>
+
+    <a href="#" class="text-indigo-500 mt-4 inline-block">← Continue Shopping</a>
+  </div>
+
+  <!-- Order Summary -->
+  <div class="p-6 border bg-gray-50 rounded-lg shadow-sm w-80">
+    <h3 class="text-lg font-semibold mb-4">Order Summary</h3>
+
+    <!-- Items Section -->
+    <div class="flex justify-between text-gray-700 text-lg font-semibold mb-4">
+      <span>Items</span>
+      <span class="font-medium">£457.98</span>
+    </div>
+
+    <!-- Shipping Section -->
+    <div class="mb-3 text-sm">
+      <label class="block text-gray-700 text-lg font-semibold mb-2">Shipping</label>
+      <select class="w-full border px-3 py-2 rounded text-gray-700 mb-4">
+        <option>Standard Delivery - £5.00</option>
+      </select>
+    </div>
+
+    <!-- Promo Code Section -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-lg font-semibold mb-2">Promo Code</label>
+      <input
+        type="text"
+        placeholder="Enter your code"
+        class="border w-full px-3 py-2 rounded mb-4 text-gray-700"
+      />
+      <button class="w-1/2 bg-red-500 text-white py-2 rounded text-sm">Apply</button>
+    </div>
+
+    <hr class="border-gray-300 mb-8" />
+
+    <!-- Total Cost Section -->
+    <div class="flex justify-between text-lg font-semibold mb-4">
+      <span>Total Cost</span>
+      <span>£462.98</span>
+    </div>
+
+    <!-- Checkout Button -->
+    <button class="w-full bg-indigo-600 text-white py-3 rounded text-sm">Checkout</button>
+  </div>
+
+</div>

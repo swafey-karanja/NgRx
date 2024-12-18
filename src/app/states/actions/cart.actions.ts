@@ -2,6 +2,7 @@ import { createAction, props } from "@ngrx/store";
 import { Product } from "../../models/product";
 
 
-export const addToCart = createAction('[Cart Component] addToCart', props<{ product: Product; }>())
+export const addToCart = createAction('[Cart Component] addToCart', props<{ product: Product }>())
+export const removeFromCart = createAction('[Cart Component] removeFromCart', props<{ productId: number }>())
 export const incrementProduct = createAction('[Cart Component] incrementProduct', props<{ productId: number }>())
 export const decrementProduct = createAction('[Cart Component] decrementProduct', props<{ productId: number }>())
